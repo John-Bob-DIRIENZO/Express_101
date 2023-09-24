@@ -1,7 +1,8 @@
 import express from 'express'
-import apiRouter from "./routes/api/index.js";
+import {getApiRouter} from "./routes/api/index.js";
 import webRouter from "./routes/web/index.js";
 import logger from "./app/middleware/logger.js";
+import {Todos} from "./data/mock_data.js";
 
 const app = express()
 const port = 3001
@@ -13,7 +14,7 @@ app.use(logger)
 
 app.use('/assets', express.static('./public'))
 app.use('/', webRouter)
-app.use('/api', apiRouter)
+app.use('/api', getApiRouter(express, Todos))
 
 app.use(async (req, res) => {
     res.status(404).json({
