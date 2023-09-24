@@ -1,0 +1,22 @@
+{% extends 'base.twig' %}
+
+{% block stylesheet %}
+    {# Je peux également appeler le contenu du block parent pour en ajouter ensuite #}
+    {{ parent() }}
+    <link href="https://example.com/some_styles.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}Coucou les enfants{% endblock %}
+
+{% block body %}
+    <h1>Hello {{ firstName }} {{ lastName }} known as {{ meta.surname }} !</h1>
+    <p>You are {{ age }} years old and you are :</p>
+    <ul>
+        {% for tag in tags %}
+            <li>
+                {{ tag }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

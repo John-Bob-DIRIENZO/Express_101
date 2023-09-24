@@ -1,0 +1,22 @@
+{
+    "name": "app",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "dev": "nodemon server.js"
+    },
+    "author": "Jean-François DI RIENZO",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.18.2",
+        "nodemon": "^3.0.1",
+        "twig": "^1.16.0"
+    },
+    "nodemonConfig": {
+        "ext": "js,mjs,cjs,json,twig,html"
+    }
+}
+
+
