@@ -10,7 +10,10 @@ import {getTodoRouter} from "./todo.js";
 export function getApiRouter(express, store) {
     const apiRouter = express.Router()
 
+    // avant
     apiRouter.use('/user', apiUserRouter)
+
+    // après
     apiRouter.use('/todo', getTodoRouter(express, store))
 
     return apiRouter
