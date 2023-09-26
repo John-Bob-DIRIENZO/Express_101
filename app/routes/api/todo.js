@@ -1,5 +1,7 @@
 import express from "express";
 import {addTodo, deleteTodo, getAllTodos} from "../../app/controller/api/TodoController.js";
+import {todoSchema} from "../../app/model/Todo.js";
+import {validate} from "../../app/middleware/validator.js";
 
 /**
  * @param {express} express
@@ -12,7 +14,8 @@ export function getTodoRouter(express, ctx) {
     apiTodoRouter
         .route('/')
         .get(getAllTodos(ctx))
-        .post(addTodo(ctx))
+        // Mon nouveau middleware
+        .post(validate(todoSchema), addTodo(ctx))
 
     apiTodoRouter
         .route('/:id(\\d+)')
@@ -20,3 +23,4 @@ export function getTodoRouter(express, ctx) {
 
     return apiTodoRouter
 }
+

@@ -1,3 +1,6 @@
+import {checkSchema, matchedData, validationResult} from "express-validator";
+import {todoSchema} from "../../model/Todo.js";
+
 /**
  * @param {Context} ctx
  * @return {import('express').RequestHandler<RouteParameters<Route>>}
@@ -14,8 +17,11 @@ export function getAllTodos(ctx) {
  */
 export function addTodo(ctx) {
     return async (req, res) => {
-        // Je devrais prendre le temps de valider les données !
-        ctx.store.todoStore.addOne(req.body)
+        // Je peux toujours récupérer les données
+        // nettoyées
+        const newTodo = matchedData(req)
+
+        ctx.store.todoStore.addOne(newTodo)
         res.json(ctx.store.todoStore.getAll())
     }
 }
