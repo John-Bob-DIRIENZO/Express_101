@@ -3,20 +3,20 @@ import {addTodo, deleteTodo, getAllTodos} from "../../app/controller/api/TodoCon
 
 /**
  * @param {express} express
- * @param {Store} store
+ * @param {Context} ctx
  * @return {import('express').Router}
  */
-export function getTodoRouter(express, store) {
+export function getTodoRouter(express, ctx) {
     const apiTodoRouter = express.Router()
 
     apiTodoRouter
         .route('/')
-        .get(getAllTodos(store))
-        .post(addTodo(store))
+        .get(getAllTodos(ctx))
+        .post(addTodo(ctx))
 
     apiTodoRouter
         .route('/:id(\\d+)')
-        .delete(deleteTodo(store))
+        .delete(deleteTodo(ctx))
 
     return apiTodoRouter
 }

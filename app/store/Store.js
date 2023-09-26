@@ -5,5 +5,9 @@ export class Store {
         // Mon store principal est l'ensemble de tous
         // mes sous-stores
         this.todoStore = new TodoStore(database)
+        // this.userStore = new UserStore(database)
+        // ... avec les autres sous-stores
     }
 }
+
+

@@ -1,6 +1,8 @@
 export class TodoStore {
-    // Mon store a besoin de la database pour fonctionner,
-    // je la passe en dépendance de mon objet
+    // Mon store a besoin de la source de données pour fonctionner,
+    // pour l'instant ce n'est que mon array de todos mais,
+    // je le nomme database pour que vous compreniez le cheminement.
+    // Je la passe en dépendance de mon objet
     constructor(database) {
         this.database = database
     }
@@ -30,3 +32,5 @@ export class TodoStore {
         return this.database
     }
 }
+
+

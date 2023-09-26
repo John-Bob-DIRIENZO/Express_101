@@ -1,32 +1,32 @@
 /**
- * @param {Store} store
+ * @param {Context} ctx
  * @return {import('express').RequestHandler<RouteParameters<Route>>}
  */
-export function getAllTodos(store) {
+export function getAllTodos(ctx) {
     return async (req, res) => {
-        res.json(store.todoStore.getAll())
+        res.json(ctx.store.todoStore.getAll())
     }
 }
 
 /**
- * @param {Store} store
+ * @param {Context} ctx
  * @return {import('express').RequestHandler<RouteParameters<Route>>}
  */
-export function addTodo(store) {
+export function addTodo(ctx) {
     return async (req, res) => {
         // Je devrais prendre le temps de valider les données !
-        store.todoStore.addOne(req.body)
-        res.json(store.todoStore.getAll())
+        ctx.store.todoStore.addOne(req.body)
+        res.json(ctx.store.todoStore.getAll())
     }
 }
 
 /**
- * @param {Store} store
+ * @param {Context} ctx
  * @return {import('express').RequestHandler<RouteParameters<Route>>}
  */
-export function deleteTodo(store) {
+export function deleteTodo(ctx) {
     return async (req, res) => {
-        store.todoStore.deleteOne(parseInt(req.params.id))
-        res.json(store.todoStore.getAll())
+        ctx.store.todoStore.deleteOne(parseInt(req.params.id))
+        res.json(ctx.store.todoStore.getAll())
     }
 }

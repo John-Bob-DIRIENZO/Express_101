@@ -4,17 +4,17 @@ import {getTodoRouter} from "./todo.js";
 
 /**
  * @param {express} express
- * @param {Store} store
+ * @param {Context} ctx
  * @return {import('express').Router}
  */
-export function getApiRouter(express, store) {
+export function getApiRouter(express, ctx) {
     const apiRouter = express.Router()
 
     // avant
     apiRouter.use('/user', apiUserRouter)
 
     // après
-    apiRouter.use('/todo', getTodoRouter(express, store))
+    apiRouter.use('/todo', getTodoRouter(express, ctx))
 
     return apiRouter
 }
