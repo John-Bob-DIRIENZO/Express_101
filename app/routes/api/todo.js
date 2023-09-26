@@ -1,18 +1,22 @@
 import express from "express";
-import {addTodo, getAllTodos} from "../../app/controller/api/TodoController.js";
+import {addTodo, deleteTodo, getAllTodos} from "../../app/controller/api/TodoController.js";
 
 /**
  * @param {express} express
- * @param database
+ * @param {Store} store
  * @return {import('express').Router}
  */
-export function getTodoRouter(express, database) {
+export function getTodoRouter(express, store) {
     const apiTodoRouter = express.Router()
 
     apiTodoRouter
         .route('/')
-        .get(getAllTodos(database))
-        .post(addTodo(database))
+        .get(getAllTodos(store))
+        .post(addTodo(store))
+
+    apiTodoRouter
+        .route('/:id(\\d+)')
+        .delete(deleteTodo(store))
 
     return apiTodoRouter
 }
